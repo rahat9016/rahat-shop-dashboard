@@ -1,13 +1,92 @@
-body {
+* {
+  padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Varela Round", sans-serif !important;
+  font-family: "Fredoka One", cursive !important;
+  font-family: "Roboto", sans-serif !important;
+}
+::-webkit-scrollbar {
+  display: none;
+}
+:root {
+  --yellow: linear-gradient(180deg, #f8d49a -146%, #fad79d -46%);
+  --orange: #fca61f;
+  --glass: rgba(255, 255, 255, 0.54);
+  --bgSkyblue: #4481eb;
+  --bgBlue: #04befe;
+  --textSkyblue: #4481eb;
+  --textBlue: #04befe;
+  --white: #ffffff;
+  --black: rgb(0, 0, 0);
+  --glass-bg: linear-gradient(
+    135deg,
+    rgb(92, 151, 255) 0%,
+    rgba(4, 192, 254, 0.845) 100%
+  );
+  --activeItem: #f799a354;
+  --pink: #ff919d;
+}
+.container {
+  background: linear-gradient(
+    106deg,
+    #ffe1bc 23.63%,
+    #ffcfd1 51.63%,
+    #f3c6f1 95.63%
+  );
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.wrapper {
+  width: 97%;
+  height: 97%;
+  background: var(--glass);
+  border-radius: 100px;
+  padding: 50px;
+  overflow: hidden;
+}
+.successful-msg {
+  margin: 10px;
+  color: rgb(6, 138, 74);
+  font-weight: bold;
+}
+.error-msg {
+  margin: 10px;
+  color: rgb(201, 20, 35);
+  font-weight: bold;
+  font-family: "Varela Round", sans-serif;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.flex {
+  display: flex;
+}
+.alignItems {
+  align-items: center;
+}
+.justifyCenter {
+  justify-content: center;
+}
+.main-section {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.boxShadow-1 {
+  box-shadow: 0.5px 3px 3px -4px #333;
+}
+.select {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 16px;
+}
+a:hover {
+  color: #333 !important;
 }

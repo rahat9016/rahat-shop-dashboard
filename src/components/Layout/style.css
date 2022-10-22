@@ -1,0 +1,55 @@
+.row {
+  display: grid;
+  grid-template-columns: 200px auto 300px;
+}
+
+.sidebar-menu {
+  width: 100%;
+  height: 100vh;
+  overflow-y: scroll;
+}
+.logo-box > img {
+  padding-left: 40px;
+  width: 120px;
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  gap: 20px;
+}
+.menuItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  text-decoration: none;
+  color: #333;
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  transition: all 300ms ease;
+  position: relative;
+  height: 40px;
+  border-radius: 10px;
+}
+.menu > a:last-child {
+  margin-bottom: 100px;
+}
+.menuItem:hover {
+  cursor: pointer;
+}
+.active {
+  background-color: var(--activeItem);
+  /* padding: 10px 0px; */
+  position: relative;
+}
+.active::before {
+  content: "";
+  width: 8px;
+  height: 100%;
+  background: var(--pink);
+}
+.menu-header {
+  font-family: "Fredoka One", cursive;
+  font-weight: 400;
+  color: #424242;
+}

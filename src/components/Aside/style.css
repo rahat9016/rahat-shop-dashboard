@@ -1,0 +1,22 @@
+/* updates section */
+.updates-header {
+  margin-bottom: 30px;
+}
+/* Customer */
+.customer-orders-section {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 5px;
+}
+.customer-orders-box {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+.customer-profile-pic {
+  width: 60px;
+  height: auto;
+  border-radius: 50%;
+}

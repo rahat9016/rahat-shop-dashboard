@@ -1,0 +1,51 @@
+.image-upload-box {
+  margin-bottom: 20px;
+  width: 100%;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0.5px 3px 3px -4px #333;
+}
+.image-icon-box {
+  min-height: 100px;
+  height: fit-content;
+  flex-direction: column;
+  border: 2px dashed #f799a3;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.image-icon-box :where(p, svg) {
+  color: #f799a3;
+}
+.image-icon-box :where(svg) {
+  font-size: 50px;
+  transition: 0.3s color ease-in-out;
+}
+.image-icon-box :where(svg):hover {
+  color: #e8808a;
+  cursor: pointer;
+}
+.progress-row {
+  background-color: #f799a354;
+  margin-bottom: 10px;
+  list-style: none;
+  padding: 15px 20px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.progress-row > svg {
+  font-size: 30px;
+  color: #f799a3;
+}
+.uploadedImages {
+  width: 80%;
+  height: 40px;
+  background-color: var(--activeItem);
+  padding: 4px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}

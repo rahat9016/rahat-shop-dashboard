@@ -1,0 +1,56 @@
+/* Product view CSS */
+.showProductViewModal {
+  width: 30%;
+  height: fit-content;
+  z-index: 999999;
+  background-color: rgb(255, 255, 255);
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 0px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 4px -3px rgb(46 46 46);
+}
+.noProductShowViewModal {
+  display: none;
+}
+.view-product-header {
+  display: flex;
+  font-family: "Varela Round", sans-serif;
+  justify-content: space-between;
+  align-items: center;
+  /* border-bottom: 1px solid rgba(51, 51, 51, 0.439); */
+  padding: 10px 12px;
+  background-color: var(--activeItem);
+  color: #333;
+}
+
+.view-product-img {
+  width: 100%;
+  height: 300px;
+  text-align: center;
+}
+.view-product-img > img {
+  height: 80%;
+}
+.view-product-carousel {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  justify-content: center;
+}
+.view-product-carousel > div > img {
+  width: 50px;
+}
+.view-product-body {
+  padding: 10px;
+}
+.color-circle {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  border: 5px solid rgb(232, 232, 232);
+  padding: 2px;
+  box-shadow: 0.5px 3px 5px -3px #333;
+}
