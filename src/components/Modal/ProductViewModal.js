@@ -2,8 +2,12 @@ import React from "react";
 import { GrClose } from "react-icons/gr";
 import "./style.css";
 const ProductViewModal = (props) => {
-  const { showProductViewModal, setProductItem, productItem } = props;
-
+  const {
+    showProductViewModal,
+    setProductItem,
+    productItem,
+    setShowProductViewModal,
+  } = props;
   const {
     name,
     brand,
@@ -25,7 +29,7 @@ const ProductViewModal = (props) => {
         <h2>View product</h2>
         <GrClose
           onClick={() => {
-            props.setShowProductViewModal(false);
+            setShowProductViewModal(false);
             setProductItem([]);
           }}
           style={{ cursor: "pointer" }}
@@ -51,7 +55,7 @@ const ProductViewModal = (props) => {
           <h3>{name && name}</h3>
           <div>
             <p>Category - {categoryId && categoryId.title}</p>
-            <p>Brand - {brand && brand}</p>
+            <p>Brand - {brand ? brand.name : ""}</p>
           </div>
           <div>
             <p>Quantity - {quantity && quantity}</p>
@@ -71,7 +75,6 @@ const ProductViewModal = (props) => {
           </div>
         </div>
       </div>
-      {/* View Product footer */}
     </div>
   );
 };

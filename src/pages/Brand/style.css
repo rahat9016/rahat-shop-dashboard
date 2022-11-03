@@ -1,0 +1,11 @@
+.brand-container {
+  padding: 10px;
+}
+.brand-images-box {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+.text-area {
+  height: 100px !important;
+}

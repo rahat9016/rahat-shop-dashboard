@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { Pagination } from "antd";
 import {
   deleteProduct,
-  // filterProducts,
   getProductForPagination,
 } from "../../../action/product.action";
 import Layout from "../../../components/Layout/Layout";
@@ -12,7 +11,6 @@ import ProductDeleteModal from "../../../components/Modal/ProductDeleteModal";
 import ProductViewModal from "../../../components/Modal/ProductViewModal";
 import Search from "../../../components/Search/Search";
 import RenderProduct from "../RenderProduct.js/RenderProduct";
-// import "antd/dist/antd.min.css";
 import "./style.css";
 const AllProducts = () => {
   const allProducts = useSelector((state) => state.products);
@@ -35,7 +33,7 @@ const AllProducts = () => {
     setProductsCount(allProducts.totalProducts);
     setProducts(allProducts.paginationProduct);
   }, [allProducts.totalProducts, allProducts.paginationProduct]);
-  console.log(allProducts);
+
   // Find Product By id form all products function
   const findProductById = (id) => {
     const product = products.find((pro) => pro._id === id);
@@ -52,17 +50,19 @@ const AllProducts = () => {
       setProductItem(product);
     }
   };
-  //Delete Product
+
   const handleProductForDelete = (id) => {
     dispatch(deleteProduct(id)).then(() => {
       setShowProductDeleteModal(false);
-      dispatch(getProductForPagination("createdAt", "desc", page));
+      dispatch(getProductForPagination("", page, perPage));
     });
   };
+
   // Show Product View Modal
   const handleShowModalView = (id) => {
     setShowProductDeleteModal(false);
     setProductItem([]);
+
     if (id) {
       setShowProductViewModal(true);
       const product = findProductById(id);
@@ -71,15 +71,9 @@ const AllProducts = () => {
   };
   const handleEditProduct = (id) => {
     if (id) {
-      navigate(`/product/update/${id}`, {
-        state: { id: 7, color: "green" },
-      });
+      navigate(`/product/update/${id}`);
     }
   };
-  const handleSearchProduct = () => {
-    // dispatch(filterProducts({ query: search }));
-  };
-
   return (
     <div className="container">
       <div className="wrapper">
@@ -90,7 +84,6 @@ const AllProducts = () => {
               <Search
                 placeholder="Products"
                 style={{ height: "50px", width: "40%" }}
-                handleSearchProduct={handleSearchProduct}
                 setSearch={setSearch}
               />
             </div>
@@ -121,11 +114,6 @@ const AllProducts = () => {
               <h3>Delete</h3>
             </div>
             <div>
-              {
-                <h4 className="not-found-404">
-                  {products.length > 0 ? "" : "Product Not Found 404"}
-                </h4>
-              }
               {products.map((product, index) => (
                 <RenderProduct
                   index={index + 1}

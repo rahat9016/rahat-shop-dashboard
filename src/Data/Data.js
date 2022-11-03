@@ -24,6 +24,13 @@ export const SidebarDashboardData = [
     iconOpened: MdOutlineKeyboardArrowUp,
   },
   {
+    icon: MdOutlineAccountTree,
+    heading: "Brand",
+    location: "/brand",
+    iconClose: MdOutlineKeyboardArrowDown,
+    iconOpened: MdOutlineKeyboardArrowUp,
+  },
+  {
     icon: BsFillInboxesFill,
     heading: "Product",
     location: "/product",

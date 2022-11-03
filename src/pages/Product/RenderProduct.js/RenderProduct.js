@@ -10,7 +10,7 @@ const RenderProduct = (props) => {
       <img src={productPictures[0]?.img} alt="" />
       <p>{name}</p>
       <p>{quantity}</p>
-      <p>{brand}</p>
+      <p>{brand.name}</p>
       <p>${price}</p>
       <p>
         <AiFillEye

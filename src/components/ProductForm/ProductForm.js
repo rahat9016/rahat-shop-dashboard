@@ -8,7 +8,6 @@ import Select from "../Select/Select";
 
 const ProductForm = ({
   values,
-  setValues,
   handleProductSubmit,
   onHandleFile,
   productPictures,
@@ -16,11 +15,10 @@ const ProductForm = ({
   method,
   buttonData,
 }) => {
-  const { category, products } = useSelector((state) => ({
+  const { category, brands } = useSelector((state) => ({
     ...state,
   }));
   const categories = renderCategory(category.categories);
-  const p = useSelector((state) => state.products.product);
   return (
     <form onSubmit={handleProductSubmit} method={method}>
       {/* Product name & Price */}
@@ -81,25 +79,17 @@ const ProductForm = ({
         <div>
           <p className="input-header">Create Brand or Select Brand</p>
           <div className="flex boxShadow-1" style={{ background: "#fff" }}>
-            <Input
-              type="text"
-              placeholder="Product Brand"
-              required
-              name="brand"
-              onChange={handleChange}
-              value={values?.brand}
-            />
             <select
               value={values?.brand}
               name="brand"
               className="select"
               onChange={handleChange}
             >
-              <option>Select Brand</option>
-              {products.products.length > 0
-                ? products.products.map((product) => (
-                    <option key={product._id} value={product.brand}>
-                      {product.brand}
+              <option value={"Non Brand"}>Select Brand</option>
+              {brands.brands.length > 0
+                ? brands.brands.map((brand) => (
+                    <option key={brand._id} value={brand._id}>
+                      {brand.name}
                     </option>
                   ))
                 : null}
@@ -179,7 +169,7 @@ const ProductForm = ({
           <p className="input-header">Product Image</p>
           <Image
             onHandleFile={onHandleFile}
-            productPictures={productPictures}
+            imageHandler={productPictures}
             fromDatabaseProductPicture={values.productPictures}
           />
         </div>

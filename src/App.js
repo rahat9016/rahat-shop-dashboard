@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import {
+  getBrands,
   getCategory,
   getProductCount,
   getProducts,
@@ -9,6 +10,7 @@ import {
 } from "./action";
 import Signing from "./pages/Auth/Signing";
 import Signup from "./pages/Auth/Signup";
+import Brand from "./pages/Brand/Brand";
 import Category from "./pages/Category/Category";
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
@@ -26,13 +28,14 @@ function App() {
       dispatch(getCategory());
       dispatch(getProducts());
       dispatch(getProductCount());
+      dispatch(getBrands());
     }
   }, [auth.authenticate, dispatch]);
   useEffect(() => {
     if (!auth.authenticate) {
       dispatch(isUserLoggedIn());
     }
-  });
+  }, [dispatch, auth.authenticate]);
 
   return (
     <div>
@@ -51,6 +54,14 @@ function App() {
           element={
             <PrivateRouter>
               <Category />
+            </PrivateRouter>
+          }
+        ></Route>
+        <Route
+          path="/brand"
+          element={
+            <PrivateRouter>
+              <Brand />
             </PrivateRouter>
           }
         ></Route>
