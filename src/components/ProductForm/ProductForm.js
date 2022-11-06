@@ -14,11 +14,15 @@ const ProductForm = ({
   handleChange,
   method,
   buttonData,
+  handleKeyDown,
+  keyFeatures,
+  removeKeyFeatures,
 }) => {
   const { category, brands } = useSelector((state) => ({
     ...state,
   }));
   const categories = renderCategory(category.categories);
+
   return (
     <form onSubmit={handleProductSubmit} method={method}>
       {/* Product name & Price */}
@@ -166,13 +170,37 @@ const ProductForm = ({
           ></textarea>
         </div>
         <div>
-          <p className="input-header">Product Image</p>
-          <Image
-            onHandleFile={onHandleFile}
-            imageHandler={productPictures}
-            fromDatabaseProductPicture={values.productPictures}
-          />
+          <p className="input-header">Key Features</p>
+          <div className="boxShadow-1 keyFeaturesContainer">
+            {keyFeatures.map((key, index) => {
+              return (
+                <div className="featureItem" key={index}>
+                  <span className="featureText">{key}</span>
+                  <span
+                    className="featureClose"
+                    onClick={() => removeKeyFeatures(index)}
+                  >
+                    &times;
+                  </span>
+                </div>
+              );
+            })}
+            <input
+              type="text"
+              className="featureInput"
+              placeholder="Write Key Features"
+              onKeyDown={handleKeyDown}
+            />
+          </div>
         </div>
+      </div>
+      <div>
+        <p className="input-header">Product Image</p>
+        <Image
+          onHandleFile={onHandleFile}
+          imageHandler={productPictures}
+          fromDatabaseProductPicture={values.productPictures}
+        />
       </div>
       <div
         style={{
