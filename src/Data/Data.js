@@ -10,6 +10,7 @@ import {
   MdOutlineKeyboardArrowUp,
 } from "react-icons/md";
 import { FaClipboardList, FaSitemap } from "react-icons/fa";
+import { TbShoppingCartDiscount } from "react-icons/tb";
 export const SidebarDashboardData = [
   {
     icon: AiFillHome,
@@ -41,6 +42,11 @@ export const SidebarDashboardData = [
     location: "/all-products",
   },
 
+  {
+    icon: TbShoppingCartDiscount,
+    heading: "Coupon",
+    location: "/coupon",
+  },
   {
     icon: BsPeopleFill,
     heading: "Customers",

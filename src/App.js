@@ -8,10 +8,12 @@ import {
   getProducts,
   isUserLoggedIn,
 } from "./action";
+import { getCoupon } from "./action/coupon.action";
 import Signing from "./pages/Auth/Signing";
 import Signup from "./pages/Auth/Signup";
 import Brand from "./pages/Brand/Brand";
 import Category from "./pages/Category/Category";
+import Coupon from "./pages/Coupon/Coupon";
 import Home from "./pages/Home/Home";
 import NotFound from "./pages/NotFound/NotFound";
 import PrivateRouter from "./pages/PrivateRoute/PrivateRoute";
@@ -29,6 +31,7 @@ function App() {
       dispatch(getProducts());
       dispatch(getProductCount());
       dispatch(getBrands());
+      dispatch(getCoupon());
     }
   }, [auth.authenticate, dispatch]);
   useEffect(() => {
@@ -80,6 +83,14 @@ function App() {
           element={
             <PrivateRouter>
               <Product />
+            </PrivateRouter>
+          }
+        ></Route>
+        <Route
+          path="/coupon"
+          element={
+            <PrivateRouter>
+              <Coupon />
             </PrivateRouter>
           }
         ></Route>
