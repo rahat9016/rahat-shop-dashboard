@@ -5,16 +5,16 @@ const Select = (props) => {
     <select
       name={props.name && props.name}
       onChange={props.onChange}
-      className={`select ${props.class ? props.class : ""}`}
+      className={`select ${props.className ? props.className : ""}`}
       value={props.value && props.value}
       style={{ ...props.style }}
       required={props.required && props.required}
     >
       <option value={""}>{props.optionValue && props.optionValue}</option>
-      {props.categories.map((category) => {
+      {props.categories.map((category, index) => {
         return (
-          <option key={category.value} value={category.value}>
-            {category.name || props?.title}
+          <option key={index} value={category.id}>
+            {category.title || props?.title}
           </option>
         );
       })}

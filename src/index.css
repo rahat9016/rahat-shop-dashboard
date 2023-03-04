@@ -29,6 +29,9 @@ body {
   --activeItem: #f799a354;
   --pink: #ff919d;
 }
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 .container {
   background: linear-gradient(
     106deg,
@@ -89,4 +92,16 @@ body {
 }
 a:hover {
   color: #333 !important;
+}
+
+.bg {
+  background: linear-gradient(
+    106deg,
+    #ffe1bc 23.63%,
+    #ffcfd1 51.63%,
+    #f3c6f1 95.63%
+  );
+}
+.glass {
+  background: rgba(255, 255, 255, 0.371);
 }

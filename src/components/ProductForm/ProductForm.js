@@ -22,11 +22,11 @@ const ProductForm = ({
     ...state,
   }));
   const categories = renderCategory(category.categories);
-
+  // console.log(brands);
   return (
-    <form onSubmit={handleProductSubmit} method={method}>
+    <form onSubmit={handleProductSubmit}>
       {/* Product name & Price */}
-      <div className="product-input-box  ">
+      <div className="product-input-box ">
         <div>
           <p className="input-header">Product name</p>
           <Input
@@ -78,7 +78,7 @@ const ProductForm = ({
           />
         </div>
       </div>
-      {/* Create Brand, Shipping & Color */}
+      {/*  Brand, Shipping & Color */}
       <div className="product-input-box">
         <div>
           <p className="input-header">Create Brand or Select Brand</p>
@@ -187,7 +187,7 @@ const ProductForm = ({
             })}
             <input
               type="text"
-              className="featureInput"
+              className="border outline-none p-2 rounded-3xl w-full"
               placeholder="Write Key Features"
               onKeyDown={handleKeyDown}
             />
@@ -200,6 +200,7 @@ const ProductForm = ({
           onHandleFile={onHandleFile}
           imageHandler={productPictures}
           fromDatabaseProductPicture={values.productPictures}
+          multiple={"multiple"}
         />
       </div>
       <div

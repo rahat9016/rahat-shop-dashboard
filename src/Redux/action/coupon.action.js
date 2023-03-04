@@ -1,4 +1,4 @@
-import axios from "../helpers/axios";
+import axios from "../../helpers/axios";
 import { couponConstance } from "./constance";
 
 export const createCoupon = (name, expiry, discount) => {

@@ -39,7 +39,7 @@ export const SidebarDashboardData = [
   {
     icon: FaSitemap,
     heading: "All Products",
-    location: "/all-products",
+    location: "/products",
   },
 
   {

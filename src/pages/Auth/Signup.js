@@ -7,7 +7,7 @@ import Register from "../../images/register.svg";
 import { useDispatch, useSelector } from "react-redux";
 import "./style.css";
 import { useNavigate } from "react-router-dom";
-import { signup } from "../../action/auth.action";
+import { signup } from "../../Redux/action/auth.action";
 const Signup = () => {
   const navigate = useNavigate();
 

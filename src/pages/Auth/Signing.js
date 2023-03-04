@@ -6,8 +6,8 @@ import { BsGoogle, BsTwitter } from "react-icons/bs";
 import Button from "../../components/Button/Button";
 import Log from "../../images/log.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../action/auth.action";
 import { useNavigate } from "react-router-dom";
+import { login } from "../../Redux/action/auth.action";
 const Signing = () => {
   const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();

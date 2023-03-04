@@ -2,13 +2,14 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
+
+import Layout from "../../../components/Layout/Layout";
+import ProductForm from "../../../components/ProductForm/ProductForm";
 import {
   getProductById,
   getProducts,
   updateProduct,
-} from "../../../action/product.action";
-import Layout from "../../../components/Layout/Layout";
-import ProductForm from "../../../components/ProductForm/ProductForm";
+} from "../../../Redux/action/product.action";
 import { api } from "../../../urlConfig";
 const initialState = {
   name: "",
@@ -36,6 +37,7 @@ const UpdateProduct = () => {
       setValues({ ...values, ...res.data.product });
     });
   }, []);
+
   const handleProductSubmit = (e) => {
     e.preventDefault();
     const form = new FormData();
@@ -52,7 +54,7 @@ const UpdateProduct = () => {
     }
     dispatch(updateProduct(id, form)).then(() => {
       dispatch(getProducts());
-      navigate("/all-products");
+      navigate("/products");
     });
   };
   const handleChange = (e) => {

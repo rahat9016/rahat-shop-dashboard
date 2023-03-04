@@ -1,8 +1,8 @@
 import React from "react";
 import Layout from "../../components/Layout/Layout";
-import "./style.css";
-const Home = () => {
+
+const Orders = () => {
   return <Layout></Layout>;
 };
 
-export default Home;
+export default Orders;

@@ -1,4 +1,4 @@
-import axios from "../helpers/axios";
+import axios from "../../helpers/axios";
 import { productConstance } from "./constance";
 
 export const addProduct = (form) => {
@@ -27,7 +27,7 @@ export const getProducts = () => {
     dispatch({
       type: productConstance.GET_PRODUCT_REQUEST,
     });
-    const res = await axios.get("/get-all-products");
+    const res = await axios.get("/products");
     if (res.status === 200) {
       dispatch({
         type: productConstance.GET_PRODUCT_SUCCESS,
@@ -73,11 +73,12 @@ export const deleteProduct = (id) => {
       type: productConstance.DELETE_PRODUCT_REQUEST,
     });
     try {
-      const res = await axios.delete(`/admin/product/delete/${id}`);
+      const res = await axios.delete(`/product/delete/${id}`);
       if (res.status === 204) {
         dispatch({
           type: productConstance.DELETE_PRODUCT_SUCCESS,
         });
+        dispatch(getProducts());
       }
     } catch (error) {}
   };
@@ -92,17 +93,16 @@ export const updateProduct = (id, form) => {
     }
   };
 };
-export const getProductForPagination = (query, page, perPage) => {
-  // console.log({ query, page });
+export const filterProducts = (query) => {
   return async (dispatch) => {
-    dispatch({ type: productConstance.GET_PRODUCT_FOR_PAGINATION_REQUEST });
-    const res = await axios.post("/products", { query, page, perPage });
+    dispatch({ type: productConstance.GET_FILTER_PRODUCT_REQUEST });
+    const res = await axios.post("/search/products", { query });
     // console.log(res.data);
     if (res.status === 200) {
       dispatch({
-        type: productConstance.GET_PRODUCT_FOR_PAGINATION_SUCCESS,
+        type: productConstance.GET_FILTER_PRODUCT_SUCCESS,
         payload: {
-          paginationProduct: res.data.products,
+          filterProducts: res.data.products,
         },
       });
     }

@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addProduct, getProducts } from "../../action/product.action";
 import Layout from "../../components/Layout/Layout";
 import ProductForm from "../../components/ProductForm/ProductForm";
 // import AllProducts from "./AllProducts/AllProducts";
 import "./style.css";
+import { addProduct, getProducts } from "../../Redux/action/product.action";
 const initialState = {
   name: "",
   price: 0,
@@ -13,12 +13,14 @@ const initialState = {
   description: "",
   categoryId: "",
   shipping: "",
+  brand: "",
 };
 const Product = () => {
   const dispatch = useDispatch();
   const [values, setValues] = useState(initialState);
   const [productPictures, setProductPictures] = useState([]);
   const [keyFeatures, setKeyFeatures] = useState([]);
+
   const handleProductSubmit = (e) => {
     e.preventDefault();
     const form = new FormData();
@@ -38,6 +40,16 @@ const Product = () => {
     }
     dispatch(addProduct(form)).then(() => {
       dispatch(getProducts());
+      values.name = "";
+      values.price = 0;
+      values.quantity = 0;
+      values.color = "";
+      values.description = "";
+      values.shipping = "";
+      values.categoryId = "";
+      values.brand = "";
+      setKeyFeatures([]);
+      setProductPictures([]);
     });
   };
   const handleKeyDown = (e) => {
@@ -55,36 +67,32 @@ const Product = () => {
     );
   };
   const onHandleFile = (e) => {
-    setProductPictures([...productPictures, e.target.files[0]]);
+    const files = e.target.files;
+    setProductPictures([...productPictures, ...files]);
   };
   const handleChange = (e) => {
     e.preventDefault();
     setValues({ ...values, [e.target.name]: e.target.value });
   };
-
   return (
-    <div className="container">
-      <div className="wrapper">
-        <Layout sidebar>
-          <h3 className="product-header">Create Product</h3>
-          <div className="product-section">
-            <ProductForm
-              handleKeyDown={handleKeyDown}
-              keyFeatures={keyFeatures}
-              removeKeyFeatures={removeKeyFeatures}
-              values={values}
-              setValues={setValues}
-              handleProductSubmit={handleProductSubmit}
-              onHandleFile={onHandleFile}
-              productPictures={productPictures}
-              handleChange={handleChange}
-              method="POST"
-              buttonData="Create"
-            />
-          </div>
-        </Layout>
+    <Layout>
+      <h3 className="product-header">Create Product</h3>
+      <div className="product-section">
+        <ProductForm
+          handleKeyDown={handleKeyDown}
+          keyFeatures={keyFeatures}
+          removeKeyFeatures={removeKeyFeatures}
+          values={values}
+          setValues={setValues}
+          handleProductSubmit={handleProductSubmit}
+          onHandleFile={onHandleFile}
+          productPictures={productPictures}
+          handleChange={handleChange}
+          method="POST"
+          buttonData="Create"
+        />
       </div>
-    </div>
+    </Layout>
   );
 };
 

@@ -6,6 +6,7 @@ const initialState = {
   error: "",
   categories: [],
 };
+
 export const categoryReducers = (state = initialState, action) => {
   switch (action.type) {
     case categoryConstance.CREATE_CATEGORY_REQUEST:
@@ -35,6 +36,11 @@ export const categoryReducers = (state = initialState, action) => {
         ...state,
         loading: false,
         categories: action.payload.categories,
+      };
+    case categoryConstance.DELETE_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        loading: false,
       };
     default:
       return state;

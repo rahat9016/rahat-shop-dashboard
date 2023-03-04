@@ -1,6 +1,6 @@
 import React from "react";
 
-const ProductDeleteModal = (props) => {
+const BrandDeleteModal = (props) => {
   return (
     <div
       className={`${
@@ -10,7 +10,7 @@ const ProductDeleteModal = (props) => {
       }`}
     >
       <div className="flex justify-between bg-slate-50 px-2 py-1 border-b-2">
-        <h1>Do you want to delete Product?</h1>
+        <h1>Do you want to delete Brand?</h1>
         <span
           onClick={() => {
             props.setDeleteModal(false);
@@ -23,18 +23,16 @@ const ProductDeleteModal = (props) => {
       <div className="p-2">
         <div className="flex items-center gap-2">
           <img
-            src={
-              props.deleteItem?.productPictures !== undefined
-                ? props.deleteItem?.productPictures[0]?.url
-                : null
-            }
+            src={props.deleteItem && props.deleteItem.brandLogo?.url}
             alt=""
             className="w-16"
           />
           <div>
-            <h2> Category name:- {props.deleteItem.name} </h2>
+            <h2> Brand name:- {props.deleteItem.name} </h2>
+            <h2>Brand Description:- {props.deleteItem?.description}</h2>
           </div>
         </div>
+
         <div className="flex gap-1 justify-end mt-2">
           <button
             className="px-4 py-1  bg-red-200 text-red-500"
@@ -47,7 +45,6 @@ const ProductDeleteModal = (props) => {
           </button>
           <button
             className="px-4 py-1  bg-green-200 text-green-500"
-            disabled={props.deleteItem.children}
             onClick={() => props.handleDeleteButton(props.deleteItem._id)}
           >
             Yes
@@ -58,4 +55,4 @@ const ProductDeleteModal = (props) => {
   );
 };
 
-export default ProductDeleteModal;
+export default BrandDeleteModal;

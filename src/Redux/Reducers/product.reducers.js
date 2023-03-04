@@ -6,7 +6,6 @@ const initialState = {
   loading: false,
   error: "",
   product: [],
-  paginationProduct: [],
   filterProducts: [],
   totalProducts: 0,
 };
@@ -48,15 +47,15 @@ export const productsReducers = (state = initialState, action) => {
         loading: false,
         error: action.payload.error,
       };
-    case productConstance.GET_PRODUCT_FOR_PAGINATION_REQUEST:
+    case productConstance.GET_FILTER_PRODUCT_REQUEST:
       return {
         ...state,
         loading: true,
       };
-    case productConstance.GET_PRODUCT_FOR_PAGINATION_SUCCESS:
+    case productConstance.GET_FILTER_PRODUCT_SUCCESS:
       return {
         ...state,
-        paginationProduct: action.payload.paginationProduct,
+        filterProducts: action.payload.filterProducts,
         loading: false,
       };
     case productConstance.GET_PRODUCT_COUNT_REQUEST:

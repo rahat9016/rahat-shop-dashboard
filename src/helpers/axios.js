@@ -1,6 +1,6 @@
 import axios from "axios";
-import { authConstance } from "../action/constance";
-import store from "../store";
+import { authConstance } from "../Redux/action/constance";
+import store from "../Redux/store";
 import { api } from "../urlConfig";
 const token = window.localStorage.getItem("token");
 const axiosInstance = axios.create({
